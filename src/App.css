@@ -1,0 +1,56 @@
+* {
+  list-style-type: none;
+}
+
+form {
+  display: flex;
+  gap: 10px;
+}
+
+button {
+  margin-left: 30px;
+  padding: 5px 10px;
+  background-color: rgb(0, 183, 255);
+  color: azure;
+  border: none;
+}
+
+input {
+  padding: 5px 10px;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-block: 10px;
+  padding: 10px 15px;
+}
+
+.booklist {
+  display: flex;
+  justify-content: space-between;
+}
+
+.App {
+  padding: 40px 50px;
+}
+
+.books {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px 20px;
+}
+
+.deletebtn {
+  padding: 5px 10px;
+  align-self: center;
+}
+
+.menu {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
