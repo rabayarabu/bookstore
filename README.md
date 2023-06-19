@@ -54,6 +54,7 @@
 
 
 
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
@@ -110,7 +111,9 @@ First, make sure you have <a href="https://nodejs.org/en">Node.js</a> installed 
 ## 🔭 Future Features <a name="future-features"></a>
 
 
+
 - [ ] **[React-Redux]**
+
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
