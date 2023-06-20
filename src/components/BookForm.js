@@ -1,21 +1,18 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { v4 as uuid } from 'uuid';
+import { addBook } from '../redux/books/booksSlice';
 
-const BookForm = (prop) => {
+const BookForm = () => {
+  const dispatch = useDispatch();
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
-  const { onAddBook } = prop;
+
   const handleSubmit = (event) => {
     event.preventDefault();
-
     // Create a new book object
-    const newBook = {
-      title,
-      author,
-    };
-
-    // Call the onAddBook callback with the new book
-    onAddBook(newBook);
-
+    // Call the AddBook callback with the new book
+    dispatch(addBook({ book: { id: uuid(), title, author } }));
     // Clear the form inputs
     setTitle('');
     setAuthor('');
@@ -27,7 +24,6 @@ const BookForm = (prop) => {
       <form onSubmit={handleSubmit}>
         <input
           type="text"
-          id="title"
           placeholder="Book Title"
           value={title}
           onChange={(event) => setTitle(event.target.value)}
@@ -36,7 +32,6 @@ const BookForm = (prop) => {
 
         <input
           type="text"
-          id="author"
           placeholder="Book Aouthor"
           value={author}
           onChange={(event) => setAuthor(event.target.value)}
