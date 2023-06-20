@@ -49,7 +49,7 @@ const BookForm = () => {
 
         <input
           type="text"
-          placeholder="Book Aouthor"
+          placeholder="Category"
           name="category"
           value={book.category}
           onChange={handleSubmit}
