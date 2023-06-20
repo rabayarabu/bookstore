@@ -113,7 +113,10 @@ First, make sure you have <a href="https://nodejs.org/en">Node.js</a> installed 
 
 
 
+
 - [ ] **[Use external API]**
+- [ ] **[React-Redux]**
+
 
 
 
