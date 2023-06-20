@@ -51,6 +51,7 @@
 - **[Use React components.]**
 - **[Use React router]**
 - **[Use Redux_Toolkit]**
+- **[Connect_React Redux]**
 
 
 
@@ -112,7 +113,10 @@ First, make sure you have <a href="https://nodejs.org/en">Node.js</a> installed 
 
 
 
+
+- [ ] **[Use external API]**
 - [ ] **[React-Redux]**
+
 
 
 

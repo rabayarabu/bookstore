@@ -1,33 +1,22 @@
-import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import BookForm from './BookForm';
-import DeleteBook from './BookList';
+import BookList from './BookList';
 
-const BookList = () => {
-  const [books, setBooks] = useState([
-    { id: 1, title: 'Book 1', author: 'Author 1' },
-    { id: 2, title: 'Book 2', author: 'Author 2' },
-    // ...more books
-  ]);
+const BookStore = () => {
+  const { books } = useSelector((store) => store.books);
 
-  const handleDeleteBook = (bookId) => {
-    setBooks(books.filter((book) => book.id !== bookId));
-  };
-  const handleAddBook = (newBook) => {
-    setBooks([...books, newBook]);
-  };
   return (
     <div className="books">
       {books.map((book) => (
-        <DeleteBook
+        <BookList
           key={book.id}
-          title={book.title}
-          author={book.author}
-          onClick={() => handleDeleteBook(book.id)}
+          id={book.id}
+          book={book}
         />
       ))}
-      <BookForm onAddBook={handleAddBook} />
+      <BookForm />
     </div>
   );
 };
 
-export default BookList;
+export default BookStore;

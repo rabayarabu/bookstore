@@ -1,16 +1,12 @@
-import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { removeBook } from '../redux/books/booksSlice';
 
-const DeleteBook = (prop) => {
-  const [isDeleted, setIsDeleted] = useState(false);
-  const { title, author, onClick } = prop;
+const BookList = (prop) => {
+  const dispatch = useDispatch();
+  const { book: { author, title, id } } = prop;
   const handleDelete = () => {
-    setIsDeleted(true);
-    onClick();
+    dispatch(removeBook({ id }));
   };
-
-  if (isDeleted) {
-    return null; // Return null to hide the deleted book component
-  }
 
   return (
     <div className="booklist">
@@ -25,4 +21,4 @@ const DeleteBook = (prop) => {
   );
 };
 
-export default DeleteBook;
+export default BookList;
