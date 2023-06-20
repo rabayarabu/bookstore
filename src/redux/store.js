@@ -8,5 +8,5 @@ const store = configureStore({
     categories: categoriesReducer,
   },
 });
-
+export const selectBooks = (store) => store.books;
 export default store;

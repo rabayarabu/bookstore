@@ -1,40 +1,58 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { v4 as uuid } from 'uuid';
-import { addBook } from '../redux/books/booksSlice';
+import { postBook } from '../redux/books/booksSlice';
 
 const BookForm = () => {
   const dispatch = useDispatch();
-  const [title, setTitle] = useState('');
-  const [author, setAuthor] = useState('');
+  const [book, setBook] = useState({ title: '', author: '', category: '' });
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const addNewBook = (e) => {
+    e.preventDefault();
+    if (book.title !== '') {
+      dispatch(postBook({ item_id: uuid(), ...book }));
+      setBook({ title: '', author: '', category: '' });
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
     // Create a new book object
     // Call the AddBook callback with the new book
-    dispatch(addBook({ book: { id: uuid(), title, author } }));
-    // Clear the form inputs
-    setTitle('');
-    setAuthor('');
+    setBook({
+      ...book,
+      [e.target.name]: e.target.value,
+    });
   };
 
   return (
     <>
       <h3>ADD NEW BOOK</h3>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={addNewBook}>
         <input
           type="text"
+          name="title"
+          value={book.title}
           placeholder="Book Title"
-          value={title}
-          onChange={(event) => setTitle(event.target.value)}
+          onChange={handleSubmit}
           required
         />
 
         <input
           type="text"
           placeholder="Book Aouthor"
-          value={author}
-          onChange={(event) => setAuthor(event.target.value)}
+          name="author"
+          value={book.author}
+          onChange={handleSubmit}
+          required
+        />
+
+        <input
+          type="text"
+          placeholder="Book Aouthor"
+          name="category"
+          value={book.category}
+          onChange={handleSubmit}
           required
         />
 
