@@ -1,25 +1,52 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import axios from 'axios';
+import { DEL_BOOK, GET_BOOKS, POST_BOOK } from '../api';
 
 const initialState = {
-  books: [{
-    id: 'item1',
-    title: 'The Great Gatsby',
-    author: 'John Smith',
-    category: 'Fiction',
+  books: [],
+  getStatus: {
+    error: false,
+    errMsg: '',
+    loading: true,
   },
-  {
-    id: 'item2',
-    title: 'Anna Karenina',
-    author: 'Leo Tolstoy',
-    category: 'Fiction',
+  delStatus: {
+    error: false,
+    errMsg: '',
+    loading: false,
   },
-  {
-    id: 'item3',
-    title: 'The Selfish Gene',
-    author: 'Richard Dawkins',
-    category: 'Nonfiction',
-  }],
+  postStatus: {
+    error: false,
+    errMsg: '',
+    loading: false,
+  },
 };
+
+export const getBooks = createAsyncThunk('books/getBooks', async (thunkAPI) => {
+  try {
+    const resp = await axios.get(GET_BOOKS);
+    return resp.data;
+  } catch (e) {
+    return thunkAPI.rejectWithValue(e);
+  }
+});
+
+export const postBook = createAsyncThunk('books/postBook', async (book, thunkAPI) => {
+  try {
+    await axios.post(POST_BOOK, book);
+    return { id: book.item_id, ...book };
+  } catch (e) {
+    return thunkAPI.rejectWithValue(e);
+  }
+});
+
+export const delBook = createAsyncThunk('books/delBook', async (id, thunkAPI) => {
+  try {
+    await axios.delete(`${DEL_BOOK}/${id}`);
+    return id;
+  } catch (e) {
+    return thunkAPI.rejectWithValue(e);
+  }
+});
 
 const booksSlice = createSlice({
   name: 'books',
@@ -32,7 +59,100 @@ const booksSlice = createSlice({
       books: state.books.filter((book) => book.id !== payload.id),
     }),
   },
+  extraReducers: (builder) => {
+    builder
+      // get books from api
+      .addCase(getBooks.pending, (state) => ({
+        ...state,
+        getStatus: {
+          loading: true,
+          errMsg: '',
+          error: false,
+        },
+      }))
+      .addCase(getBooks.fulfilled, (state, action) => {
+        const ids = Object.keys(action.payload);
+        const values = Object.values(action.payload).map((item) => item[0]);
+        const books = [];
+        for (let i = 0; i < values.length; i += 1) {
+          books.push({ id: ids[i], ...values[i] });
+        }
+        return {
+          ...state,
+          books,
+          getStatus: {
+            loading: false,
+            errMsg: '',
+            error: false,
+          },
+        };
+      })
+      .addCase(getBooks.rejected, (state, action) => ({
+        ...state,
+        getStatus: {
+          loading: false,
+          errMsg: action.payload,
+          error: true,
+        },
+      }))
+      // post book
+      .addCase(postBook.pending, (state) => ({
+        ...state,
+        postStatus: {
+          loading: true,
+          errMsg: '',
+          error: false,
+        },
+      }))
+      .addCase(postBook.fulfilled, (state, action) => ({
+        ...state,
+        books: [...state.books, action.payload],
+        postStatus: {
+          loading: false,
+          errMsg: '',
+          error: false,
+        },
+      }))
+      .addCase(postBook.rejected, (state, action) => ({
+        ...state,
+        postStatus: {
+          loading: false,
+          errMsg: action.payload,
+          error: true,
+        },
+      }))
+      // delete books
+      .addCase(delBook.pending, (state) => ({
+        ...state,
+        delStatus: {
+          loading: true,
+          errMsg: '',
+          error: false,
+        },
+      }))
+      .addCase(delBook.fulfilled, (state, action) => {
+        const books = state.books.filter((book) => book.id !== action.payload);
+        return {
+          ...state,
+          books,
+          delStatus: {
+            loading: false,
+            errMsg: '',
+            error: false,
+          },
+        };
+      })
+      .addCase(delBook.rejected, (state, action) => ({
+        ...state,
+        delStatus: {
+          loading: false,
+          errMsg: action.payload,
+          error: true,
+        },
+      }));
+  },
 });
 
 export const { addBook, removeBook } = booksSlice.actions;
+
 export default booksSlice.reducer;
