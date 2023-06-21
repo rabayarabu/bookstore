@@ -26,8 +26,8 @@ const BookForm = () => {
   };
 
   return (
-    <>
-      <h3>ADD NEW BOOK</h3>
+    <div className="book-form">
+      <h3 className="new-book">ADD NEW BOOK</h3>
       <form onSubmit={addNewBook}>
         <input
           type="text"
@@ -37,28 +37,20 @@ const BookForm = () => {
           onChange={handleSubmit}
           required
         />
-
-        <input
-          type="text"
-          placeholder="Book Aouthor"
-          name="author"
-          value={book.author}
-          onChange={handleSubmit}
-          required
-        />
-
-        <input
-          type="text"
-          placeholder="Category"
+        <select
+          className="select"
           name="category"
           value={book.category}
           onChange={handleSubmit}
-          required
-        />
+        >
+          <option value="Action">Action</option>
+          <option value="Science-Fiction">Science Fiction</option>
+          <option value="Economy">Economy</option>
+        </select>
 
-        <button type="submit">Add Book</button>
+        <button type="submit" className="add-book-button">Add Book</button>
       </form>
-    </>
+    </div>
 
   );
 };
