@@ -15,7 +15,7 @@
   - [Install](#install)
   - [Usage](#usage)
   - [Run tests](#run-tests)
-  - [Deployment](#triangular_flag_on_post-deployment)
+  - [Deployment](#deployment)
 - [👥 Authors](#authors)
 - [🔭 Future Features](#future-features)
 - [🤝 Contributing](#contributing)
@@ -42,7 +42,7 @@
   </ul>
 </details>
 
-
+### Live Demo <a name="live-demo"></a>
 <!-- Features -->
 
 ### Key Features <a name="key-features"></a>
@@ -75,22 +75,63 @@ In order to run this project you need:
 
 ### Setup
 
-The easiest way to create a React application is using <a href="https://create-react-app.dev/">Create React App</a>
+Clone this repository to your desired folder:
 
+
+Example commands:
 
 ```sh
-  git@github.com:rabayarabu/bookstore.git
+  cd my-folder
+  git clone git@github.comuno36/BookStore.git
 ```
 
 ### Install
 
 Install this project with:
 
-First, make sure you have <a href="https://nodejs.org/en">Node.js</a> installed on your machine
+
+Example command:
 
 ```sh
-  https://nodejs.org/en
+  cd my-project
+  no installation required
 ```
+
+
+### Usage
+
+To run the project, execute the following command:
+
+
+Example command:
+
+```sh
+  npm start
+```
+
+
+### Run tests
+
+To run tests, run the following command:
+
+
+Example command:
+
+```sh
+  npm tests
+```
+
+### Deployment<a name="deployment"></a>
+
+You can deploy this project using:
+
+
+Example:
+
+```sh
+    no deployment
+```
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
