@@ -39,12 +39,12 @@ const BookList = (prop) => {
             <span className="progress-bar" />
           </span>
           <div className="progress-value">90%</div>
-          <div className="completed">completed</div>
+          <div className="completed">Completed</div>
         </div>
         <div className="chapter">
           <h5 className="current-chapter">CURRENT CHAPTER</h5>
           <p>Chapter 1</p>
-          <button type="button" className="progress-btn">Update Progress</button>
+          <button type="button" className="progress-btn">UPDATE PROGRESS</button>
         </div>
       </div>
     </li>
