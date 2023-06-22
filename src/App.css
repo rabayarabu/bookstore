@@ -16,7 +16,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   margin: 0 auto;
-  padding: 0 10rem;
+  padding: 0 4rem;
   font-weight: bolder;
 }
 
@@ -48,11 +48,10 @@ nav {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
   border: 1px solid #e8e8e8;
-  max-width: 1215px;
-  margin: 30px 110px;
+  margin: 30px 20px;
   gap: 5px;
   border-radius: 5px;
-  padding: 20px;
+  padding: 10px;
   box-shadow: rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
 }
 
@@ -216,7 +215,7 @@ nav {
 .book-form {
   border-top: 2px solid rgb(246, 242, 242);
   padding-block: 20px;
-  margin: 0 155px;
+  margin: 0 63px;
 }
 
 .new-book {
@@ -229,7 +228,7 @@ form {
 }
 
 input {
-  min-width: 66%;
+  min-width: 63%;
   padding: 5px 10px;
   margin-bottom: 5px;
   border-radius: 5px;
@@ -237,11 +236,12 @@ input {
   font-size: 1.3rem;
   font-family: inherit;
   border: 1px solid gray;
+  margin-left: 5px;
 }
 
 .select {
   font-family: 'Roboto Slab', sans-serif;
-  width: 20%;
+  width: 23.5%;
   padding: 5px 10px;
   margin-bottom: 5px;
   border-radius: 5px;
@@ -258,4 +258,8 @@ input {
   color: white;
   font-size: 10px;
   line-height: 10px;
+}
+
+.details {
+  padding-right: 55px;
 }
