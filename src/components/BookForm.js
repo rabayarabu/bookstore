@@ -18,7 +18,6 @@ const BookForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Create a new book object
-    // Call the AddBook callback with the new book
     setBook({
       ...book,
       [e.target.name]: e.target.value,
@@ -26,8 +25,8 @@ const BookForm = () => {
   };
 
   return (
-    <>
-      <h3>ADD NEW BOOK</h3>
+    <div className="book-form">
+      <h3 className="new-book">ADD NEW BOOK</h3>
       <form onSubmit={addNewBook}>
         <input
           type="text"
@@ -37,28 +36,20 @@ const BookForm = () => {
           onChange={handleSubmit}
           required
         />
-
-        <input
-          type="text"
-          placeholder="Book Aouthor"
-          name="author"
-          value={book.author}
-          onChange={handleSubmit}
-          required
-        />
-
-        <input
-          type="text"
-          placeholder="Category"
+        <select
+          className="select"
           name="category"
           value={book.category}
           onChange={handleSubmit}
-          required
-        />
+        >
+          <option value="Action" className="option">Action</option>
+          <option value="Science-Fiction">Science Fiction</option>
+          <option value="Economy">Economy</option>
+        </select>
 
-        <button type="submit">Add Book</button>
+        <button type="submit" className="add-book-button">ADD BOOK</button>
       </form>
-    </>
+    </div>
 
   );
 };

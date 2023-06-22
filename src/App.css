@@ -1,5 +1,225 @@
 * {
   list-style-type: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+/* navbar */
+header {
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+}
+
+nav {
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  padding: 0 4rem;
+  font-weight: bolder;
+}
+
+.left {
+  display: flex;
+  justify-content: space-between;
+}
+
+.title {
+  color: rgba(41, 113, 208, 0.723);
+}
+
+.menu {
+  display: flex;
+  gap: 20px;
+  line-height: 47px;
+  font-size: 13px;
+}
+
+.avatar {
+  vertical-align: middle;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+/* booklist styles */
+.booklist {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  border: 1px solid #e8e8e8;
+  margin: 30px 13px;
+  gap: 5px;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+}
+
+.book {
+  font-family: 'Roboto Slab', sans-serif;
+  margin-block: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.book > * {
+  margin-block: 5px;
+}
+
+.buttonlist {
+  display: flex;
+  gap: 5px;
+}
+
+.btn {
+  color: rgb(0, 195, 255);
+  border: none;
+  background-color: white;
+  cursor: pointer;
+  font-size: 15px;
+  margin-right: 10px;
+  padding-right: 20px;
+  padding-left: 0;
+  border-right: 2px solid rgb(199, 191, 191);
+}
+
+.progress {
+  width: 50px;
+  height: 50px !important;
+  position: relative;
+}
+
+.progress::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 12px solid #ffffff46;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.progress > span {
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+}
+
+.progress .progress-left {
+  left: 0;
+}
+
+.progress .progress-bar {
+  width: 100%;
+  height: 100%;
+  background: none;
+  border-width: 6px;
+  border-style: solid;
+  position: absolute;
+  top: 0;
+}
+
+.progress .progress-left .progress-bar {
+  left: 100%;
+  border-top-right-radius: 80px;
+  border-bottom-right-radius: 80px;
+  border-left: 0;
+  -webkit-transform-origin: center left;
+  transform-origin: center left;
+}
+
+.progress .progress-right {
+  right: 70px;
+  margin-top: 50px;
+}
+
+.progress .progress-right .progress-bar {
+  left: -100%;
+  border-top-left-radius: 80px;
+  border-bottom-left-radius: 80px;
+  border-right: 0;
+  -webkit-transform-origin: center right;
+  transform-origin: center right;
+  animation: loading-1 1.8s linear forwards;
+}
+
+.progress .progress-value {
+  border-radius: 50%;
+  font-size: 40px;
+  color: black;
+  line-height: 45px;
+  text-align: center;
+  position: absolute;
+  font-family: normal;
+  font-weight: 100;
+  margin-top: 50px;
+}
+
+.progress.blue .progress-bar {
+  border-color: #049dff;
+}
+
+@keyframes loading-1 {
+  0% {
+    -webkit-transform: rotate(10deg);
+    transform: rotate(10deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(200deg);
+    transform: rotate(200deg);
+  }
+}
+
+.completed {
+  line-height: 200px;
+  color: gray;
+  font-size: 12px;
+}
+
+.chapter {
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid gray;
+  padding-inline: 45px;
+  font-family: 'Roboto Slab', sans-serif;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+.chapter p {
+  margin-block: 10px;
+  text-align: left;
+}
+
+.current-chapter {
+  font-size: 12px;
+  color: gray;
+  margin-bottom: 10px;
+}
+
+.progress-btn {
+  background-color: #049dff;
+  border: none;
+  color: #e8e8e8;
+  padding: 10px 15px;
+  border-radius: 5px;
+}
+
+/* add book form */
+.book-form {
+  border-top: 2px solid rgb(246, 242, 242);
+  padding-block: 20px;
+  margin: 0 63px;
+}
+
+.new-book {
+  color: gray;
 }
 
 form {
@@ -7,50 +227,39 @@ form {
   gap: 10px;
 }
 
-button {
-  margin-left: 30px;
-  padding: 5px 10px;
-  background-color: rgb(0, 183, 255);
-  color: azure;
-  border: none;
-}
-
 input {
+  min-width: 63.5%;
   padding: 5px 10px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  outline: none;
+  font-size: 1.3rem;
+  font-family: inherit;
+  border: 1px solid gray;
+  margin-left: 2px;
 }
 
-nav {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-block: 10px;
-  padding: 10px 15px;
-}
-
-.booklist {
-  display: flex;
-  justify-content: space-between;
-}
-
-.App {
-  padding: 40px 50px;
-}
-
-.books {
-  border: 1px solid black;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 10px 20px;
-}
-
-.deletebtn {
+.select {
+  font-family: 'Roboto Slab', sans-serif;
+  width: 24%;
   padding: 5px 10px;
-  align-self: center;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  background-color: rgba(205, 201, 201, 0.426);
 }
 
-.menu {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
+.add-book-button {
+  padding: 10px 40px;
+  margin-bottom: 5px;
+  cursor: pointer;
+  background-color: rgb(0, 183, 255);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 10px;
+  line-height: 10px;
+}
+
+.details {
+  padding-right: 55px;
 }

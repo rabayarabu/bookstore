@@ -34,16 +34,16 @@ const BookStore = () => {
 
   return (
     <div>
-      <BookForm />
       <p>{postStatus.loading ? 'Posting...' : ''}</p>
       <p>{delStatus.loading ? 'Deleting...' : ''}</p>
       <pre>{postStatus.error ? postStatus.errMsg : ''}</pre>
       <pre>{delStatus.error ? delStatus.errMsg : ''}</pre>
-      <ul>
+      <ul className="details">
         {books.map((book) => (
           <BookList key={book.id} id={book.id} book={book} />
         ))}
       </ul>
+      <BookForm />
     </div>
   );
 };
